@@ -1,0 +1,684 @@
+/*
+Theme Name:   Bim Getwid Base
+Description:  Дочерняя Getwid Base тема для standard.ds.do. Для создания лайтбокса добавьте css-класс bim-lightbox к изображению. Класс для стилей формы на главной странице - bim-contact-form-container.
+Author:       a. vasich
+Template:     getwid-base
+Version:      1.0.0
+License:      GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+@import "./vars.scss";
+
+@mixin bim-button {
+    border-radius: 0;
+    border: none;
+    background: var(--bim-accent);
+    font-size: var(--font-size-small);
+    padding: 13px 24px 11px;
+    color: white;
+    letter-spacing: 1px;
+    transition: all 300ms ease-in;
+
+    &:hover {
+        background-color: transparent;
+        color: var(--bim-accent);
+    }
+
+    &:disabled {
+        background-color: var(--bim-gray-dark-1);
+        pointer-events: none;
+    }
+}
+
+*:not(.lnr,
+    #wpadminbar *,
+    .bpress-section-icon,
+    .bpress-notice-icon *,
+    .bpress-vote-icon) {
+    font-family: var(--font-family) !important;
+}
+
+#masthead {
+    top: var(--wp-admin--admin-bar--height, 0);
+    position: sticky;
+    width: 100%;
+    height: 85px;
+    padding: 0;
+    background-color: white;
+    z-index: 2;
+    border: none;
+}
+
+#masthead-inner {
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    border-bottom: 1px solid var(--bim-gray-light-1);
+    padding-left: 1em;
+    padding-right: 1em;
+
+    .custom-logo-link {
+        translate: 0 5px;
+    }
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-top: 70px;
+    background: unset;
+}
+
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+    color: var(--bim-gray-dark-1);
+    font-size: var(--font-size-normal);
+    line-height: var(--default-line-height);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family);
+    font-weight: 500;
+}
+
+h1 {
+    font-size: var(--font-size-large);
+}
+
+h2 {
+    font-size: var(--font-size-bigger);
+}
+
+h3 {
+    font-size: var(--font-size-normal);
+}
+
+a,
+a:visited,
+a:hover,
+a:focus {
+    color: var(--bim-accent);
+    text-decoration: none;
+}
+
+#primary-menu {
+    * {
+        font-size: var(--font-size-small, 12px);
+        font-weight: 400;
+    }
+
+    li:not(.bpress-search *) {
+        display: flex;
+        box-sizing: border-box;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        margin: auto 15px;
+    }
+
+    li:not(.bpress-navmenu-entry, .bpress-search *) a {
+        padding: 13px 24px 11px;
+        width: 100%;
+        color: var(--bim-gray-dark-2);
+
+        display: flex;
+        align-items: center;
+
+        .feather {
+            width: 16px;
+            height: 16px;
+        }
+
+        span {
+            height: 16px;
+            line-height: 16px;
+        }
+
+        svg+span {
+            margin-left: 6px;
+        }
+    }
+
+    li.bpress-navmenu-entry {
+        .bpress-search-field {
+            font-size: var(--font-size-normal);
+        }
+
+        .bpress-search-suggest ul {
+            opacity: unset;
+            visibility: unset;
+            position: unset;
+            transition: none;
+            color: var(--bim-gray-dark-1);
+
+            * {
+                font-size: var(--font-size-normal);
+                line-height: var(--default-line-height);
+            }
+
+            li {
+                width: 100%;
+                padding: 0.5em 1em;
+            }
+
+            li>* {
+                width: 100%;
+                padding: unset;
+            }
+        }
+    }
+
+    li.ds-navmenu-entry {
+        border: 1px solid var(--bim-accent);
+    }
+
+    li.exit-navmenu-entry {
+        margin-right: 0;
+    }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+select,
+textarea {
+    border: 2px solid var(--bim-gray-light-1);
+
+    &:focus {
+        border-color: var(--bim-accent);
+        outline: none;
+    }
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button,
+.more-link {
+    @include bim-button;
+}
+
+fieldset {
+    border: none;
+}
+
+.bim-separated-list {
+    border-top: 1px solid var(--bim-gray-light-1);
+    border-bottom: 1px solid var(--bim-gray-light-1);
+
+    >li.bim-separated-list-item {
+        margin: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid var(--bim-gray-light-1);
+        }
+    }
+}
+
+.bim-accent {
+    color: var(--bim-accent);
+}
+
+body.page .site-main>.hentry>.entry-header {
+    margin: 0 auto;
+
+    >.entry-title {
+        margin: 0 auto;
+    }
+}
+
+#user-registration,
+.user-registration {
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: white;
+
+    &:has(>.login) {
+        max-width: 600px;
+    }
+
+    .user-registration-tips {
+        color: inherit;
+    }
+
+    .user-registration-message {
+        border-color: var(--bim-accent);
+        background-color: var(--bim-gray-dark-2);
+        color: var(--bim-gray-light-1);
+    }
+
+    &.vertical {
+        .user-registration-MyAccount-navigation {
+            background-color: var(--bim-gray-dark-2);
+
+            ul .user-registration-MyAccount-navigation-link {
+                a {
+                    font-size: var(--font-size-normal);
+                    font-weight: 400;
+                    color: var(--bim-gray-light-1);
+                }
+
+                &.is-active a {
+                    font-weight: 500;
+                    color: var(--bim-gray-dark-2);
+                    border-color: var(--bim-accent);
+                    background-color: var(--bim-gray-light-1);
+                }
+            }
+        }
+    }
+
+    .button {
+        @include bim-button;
+    }
+
+    +.mo-openid-app-icons {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            margin-left: 8px;
+        }
+
+        a:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.bim-grid {
+    display: grid;
+    gap: 1em;
+    width: 100%;
+
+    .bim-grid-col {
+        padding: 0;
+        margin: 0;
+
+        .bim-card {
+            background-color: var(--bim-gray-dark-2);
+            color: var(--bim-gray-light-2);
+            text-align: left;
+            overflow: hidden;
+            overflow-wrap: anywhere;
+            padding: 2em;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 100%;
+            height: 100%;
+
+            transition: all 300ms ease-in;
+
+            &:hover {
+                background-color: var(--bim-accent);
+                color: white;
+            }
+
+            .bim-card-title {
+                font-size: var(--font-size-normal);
+                color: white;
+                margin: 0;
+            }
+
+            .bim-card-description {
+                font-size: var(--font-size-small);
+                margin: 1em 0 0;
+                flex-grow: 1;
+            }
+        }
+    }
+}
+
+.bim-front-page-content-wrapper {
+    margin-bottom: 60px;
+    max-width: 650px;
+}
+
+.bim-main-page-wrapper {
+    max-width: 650px;
+}
+
+.bim-lightbox-wrapper {
+    display: block;
+}
+
+.swiper {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .swiper-wrapper {
+        flex-direction: column;
+        flex-wrap: wrap !important;
+    }
+}
+
+.bim-carousel-text {
+    height: fit-content;
+    color: var(--bim-gray-dark-1);
+    font-size: var(--font-size-normal);
+    text-align: center;
+    margin-top: 9px;
+}
+
+.bim-carousel-slide {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    .bim-carousel-image-wrapper {
+        overflow: hidden;
+
+        >img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.bim-carousel-outer {
+    display: flex;
+    flex-direction: column;
+
+    .bim-carousel-pagination {
+        position: relative !important;
+        left: auto !important;
+        margin-top: 15px;
+
+        .swiper-pagination-bullet {
+            &-active {
+                background-color: var(--bim-accent);
+            }
+        }
+    }
+}
+
+.bim-contact-form-container {
+    padding: 30px 50px;
+
+    @media (min-width: 768px) {
+        padding: 75px 100px;
+    }
+
+    background-color: var(--bim-gray-dark-2);
+    color: white;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        color: white;
+        max-width: 615px;
+    }
+
+    h2 {
+        @media (min-width: 768px) {
+            font-size: 25px;
+        }
+    }
+
+    * {
+        margin: 0;
+    }
+
+    .bim-contact-form {
+        label {
+            display: none;
+        }
+
+        .wpforms-field-container {
+            padding-top: 40px;
+            padding-bottom: 30px;
+
+            .bim-contact-from-field {
+                padding: 0;
+
+                input {
+                    border-top: none;
+                    border-left: none;
+                    border-right: none;
+                    border-color: var(--bim-gray-light-2);
+
+                    &:focus {
+                        border-color: var(--bim-accent);
+                    }
+
+                    background-color: transparent;
+
+                    padding-left: 0;
+                    padding-top: 0;
+                    padding-right: 0;
+                    padding-bottom: 8px;
+
+                    color: white;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: 21px;
+                }
+            }
+        }
+
+        .bim-contact-from-field input,
+        .bim-contact-form-button {
+            width: 100%;
+            max-width: 60%;
+
+            @media only screen and (max-width: 600px) {
+                max-width: 100%;
+            }
+        }
+
+        .bim-contact-form-button {
+            text-align: left;
+        }
+    }
+}
+
+.wpDataTablesWrapper {
+    overflow: auto;
+    max-height: 75vh;
+    word-wrap: break-word;
+}
+
+#mistape_confirm_dialog {
+    h3 {
+        color: var(--bim-gray-dark-2);
+        font-weight: 400;
+    }
+
+    .mistape_mistake_outer {
+        background-color: var(--bim-gray-dark-1);
+
+        .mistape_mistake_inner {
+            font-weight: 500;
+        }
+    }
+
+    textarea {
+        color: var(--bim-gray-dark-2);
+        border-color: var(--bim-gray-light-1);
+
+        &:focus {
+            color: var(--bim-gray-dark-2);
+            border-color: var(--bim-gray-dark-1);
+        }
+    }
+
+    .mistape_action {
+        padding-top: 13px;
+        line-height: 100%;
+
+        transition: all 300ms ease-in;
+
+        background-color: var(--bim-accent) !important;
+        color: white !important;
+
+        &:hover {
+            background-color: transparent !important;
+            color: var(--bim-accent) !important;
+        }
+    }
+
+    #mistape_reported_text {
+
+        &::before,
+        &::after {
+            border-color: var(--bim-accent) !important;
+        }
+    }
+
+    .dialog-wrap-top>h2::before {
+        background-color: var(--bim-accent) !important;
+    }
+}
+
+@media (min-width: 480px) {
+    .bim-grid {
+        &.bim-grid-small {
+
+            &.bim-grid-2,
+            &.bim-grid-3,
+            &.bim-grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+
+                .bim-card {
+                    min-height: 120px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .bim-grid {
+        &.bim-grid-small {
+
+            &.bim-grid-3,
+            &.bim-grid-4 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        &.bim-grid-2,
+        &.bim-grid-3,
+        &.bim-grid-4 {
+            grid-template-columns: repeat(2, 1fr);
+
+            .bim-card {
+                min-height: 240px;
+            }
+        }
+    }
+}
+
+@media (min-width: 1280px) {
+    .bim-grid {
+
+        &.bim-grid-3,
+        &.bim-grid-4 {
+            grid-template-columns: repeat(3, 1fr);
+
+            &.bim-grid-small {
+                &.bim-grid-4 {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .bim-grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    #primary-menu {
+        display: flex;
+        align-items: baseline;
+
+        li:last-child {
+            margin-right: 0;
+            padding-right: 0;
+        }
+    }
+
+    .comment-respond {
+        max-width: 100%;
+    }
+}
+
+@media not (min-width: 992px) {
+    #site-navigation {
+        >.primary-menu-wrapper {
+            pointer-events: none;
+        }
+
+        &.toggled>.primary-menu-wrapper {
+            pointer-events: all;
+        }
+
+        #primary-menu {
+            display: flex;
+            flex-direction: column;
+
+            li {
+                margin: 15px 0;
+
+                &.bpress-navmenu-entry {
+                    order: 100;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    #masthead-inner {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

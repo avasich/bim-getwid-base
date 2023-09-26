@@ -1,0 +1,22 @@
+{
+  "name": "bim-getwid-base",
+  "author": "a. vasich",
+  "module": "src/index.js",
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest",
+    "sass": "^1.66.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build": "bun run build:sass && bun run build:copy",
+    "build:sass": "sass --no-source-map src:build/$npm_package_name",
+    "build:copy": "rsync -a --include={'*/','*.php','*.js','*.svg'} --exclude='*' ./src/* ./build/$npm_package_name",
+    "deploy": "bun run build && bun run deploy:copy",
+    "deploy:copy": "cp -r ./build/$npm_package_name $SITE_DIR/wp-content/themes",
+    "print": "echo ./build/$npm_package_name $SITE_DIR/wp-content/themes/$npm_package_name"
+  }
+}
+
