@@ -1,7 +1,6 @@
 # bim-getwid-base
 
-A Getwid Base child theme for new version of https://standard.ds.do (not yet deployed).
-
+A Getwid Base child wordpress theme for the new version of https://standard.ds.do (not yet deployed).
 
 To install dependencies:
 
