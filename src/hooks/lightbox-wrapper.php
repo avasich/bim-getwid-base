@@ -1,6 +1,6 @@
 <?php
 
-function get_image_url($innerHTML)
+function get_image_url($innerHTML): ?string
 {
     $dom = new DOMDocument();
     @$dom->loadHTML($innerHTML);
@@ -31,7 +31,7 @@ function wrap_in_lightbox($block_content, $block)
         ? wp_get_attachment_image_url($block['attrs']['id'], 'full')
         : get_image_url($block['innerHTML']);
 
-    if (is_null($url)) {
+    if (is_null($url) && $url !== false) {
         return $block_content;
     } else {
         return do_shortcode("[su_lightbox type='image' class='bim-lightbox-wrapper' src='$url'] $block_content [/su_lightbox]");
